@@ -5,7 +5,7 @@ function About() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center bg-gray-100 dark:bg-gray-900 text-black dark:text-white px-6 md:px-20 py-10 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center bg-white dark:bg-gray-900 text-black dark:text-white px-6 md:px-20 py-10 transition-all duration-300">
 
       {/* LEFT SIDE */}
       <div className="w-full md:w-1/2 space-y-6 text-center md:text-left">
@@ -29,7 +29,7 @@ function About() {
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center md:justify-start md:items-start">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
 
           <button
             onClick={() => navigate("/contact")}
@@ -41,7 +41,7 @@ function About() {
           <a
             href="/cv.pdf"
             download
-            className="w-40 h-12 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition duration-300 flex items-center justify-center"
+            className="w-40 h-12 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded-lg transition duration-300 flex items-center justify-center"
           >
             Download CV
           </a>
@@ -56,11 +56,11 @@ function About() {
         {/* Rotating Circle */}
         <div className="absolute w-60 h-60 sm:w-72 sm:h-72 md:w-[340px] md:h-[340px] rounded-full border-4 border-dashed border-blue-500 animate-spin"></div>
 
-        {/* Image */}
+        {/* Profile Image */}
         <img
           src={www}
           alt="Profile"
-          className="w-52 h-52 sm:w-64 sm:h-64 md:w-[300px] md:h-[300px] object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-2xl z-10"
+          className="relative z-10 w-52 h-52 sm:w-64 sm:h-64 md:w-[300px] md:h-[300px] object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-2xl"
         />
 
       </div>

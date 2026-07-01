@@ -22,12 +22,12 @@ function Contact() {
   const dropdownRef = useRef(null);
 
   const services = [
-    "Shopify store design",
-    "Landing page design",
-    "React router project",
-    "Animation project",
-    "Dynamic website design",
-    "Bug fixing",
+    "Shopify Store Design",
+    "Landing Page Design",
+    "React Router Project",
+    "Animation Project",
+    "Dynamic Website Design",
+    "Bug Fixing",
   ];
 
   const handleChange = (e) => {
@@ -48,37 +48,39 @@ function Contact() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
         setOpen(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
+
     return () =>
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
-    <section className="min-h-screen bg-gray-100 dark:bg-gray-900 text-black dark:text-white flex items-center justify-center px-3 sm:px-4 py-8">
+    <section className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white flex items-center justify-center px-4 py-10 transition-all duration-300">
 
-      {/* container */}
-      <div className="w-full max-w-5xl">
+      <div className="w-full max-w-6xl">
 
-        {/* title */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-10">
           Contact Me
         </h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-          {/* FORM CARD */}
-          <div className="bg-white dark:bg-gray-800/40 backdrop-blur-xl border border-gray-200 dark:border-white/20 shadow-xl rounded-2xl p-4 sm:p-6">
+          {/* Form */}
+          <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
 
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-5">
+            <h2 className="text-2xl font-bold mb-6">
               Send Message
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
 
               <input
                 type="text"
@@ -86,7 +88,7 @@ function Contact() {
                 placeholder="Your Name"
                 value={form.name}
                 onChange={handleChange}
-                className="w-full p-2.5 sm:p-3 text-sm sm:text-base rounded-xl bg-gray-100 dark:bg-white/10 border border-gray-300 dark:border-white/20"
+                className="w-full p-3 rounded-xl bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 outline-none"
               />
 
               <input
@@ -95,133 +97,154 @@ function Contact() {
                 placeholder="Your Email"
                 value={form.email}
                 onChange={handleChange}
-                className="w-full p-2.5 sm:p-3 text-sm sm:text-base rounded-xl bg-gray-100 dark:bg-white/10 border border-gray-300 dark:border-white/20"
+                className="w-full p-3 rounded-xl bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 outline-none"
               />
 
-              {/* DROPDOWN */}
+              {/* Dropdown */}
               <div className="relative" ref={dropdownRef}>
 
                 <button
                   type="button"
                   onClick={() => setOpen(!open)}
-                  className="w-full p-2.5 sm:p-3 text-sm sm:text-base rounded-xl bg-gray-100 dark:bg-white/10 border border-gray-300 dark:border-white/20 flex items-center justify-between"
+                  className="w-full p-3 rounded-xl bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 flex justify-between items-center"
                 >
-                  <span className="truncate">
+                  <span>
                     {form.service || "Select a Service"}
                   </span>
 
                   <FaChevronDown
-                    className={`transition-transform duration-300 ${
+                    className={`transition-transform ${
                       open ? "rotate-180" : ""
                     }`}
                   />
                 </button>
 
                 {open && (
-                  <div className="absolute z-50 mt-2 w-full max-h-52 overflow-auto bg-white dark:bg-gray-800 border border-gray-200 dark:border-white/20 rounded-xl shadow-2xl">
+                  <div className="absolute w-full mt-2 bg-white dark:bg-gray-800 rounded-xl border border-gray-300 dark:border-gray-600 shadow-xl overflow-hidden z-50">
 
-                    {services.map((item, index) => (
+                    {services.map((service, index) => (
                       <div
                         key={index}
-                        onClick={() => handleSelect(item)}
-                        className={`p-2.5 sm:p-3 text-sm cursor-pointer hover:bg-cyan-500 hover:text-white transition-all ${
-                          form.service === item
-                            ? "bg-cyan-100 dark:bg-cyan-900"
+                        onClick={() => handleSelect(service)}
+                        className={`px-4 py-3 cursor-pointer hover:bg-blue-600 hover:text-white transition ${
+                          form.service === service
+                            ? "bg-blue-100 dark:bg-blue-900"
                             : ""
                         }`}
                       >
-                        {item}
+                        {service}
                       </div>
                     ))}
 
                   </div>
                 )}
+
               </div>
 
-              {/* SELECTED BOX */}
               {selectedMsg && (
-                <div className="p-3 rounded-xl bg-cyan-100 dark:bg-cyan-900 border border-cyan-300 dark:border-cyan-700 text-xs sm:text-sm">
-                  Service Selected: {selectedMsg}
+                <div className="bg-blue-100 dark:bg-blue-900 border border-blue-300 dark:border-blue-700 rounded-xl p-3">
+                  Selected Service: <b>{selectedMsg}</b>
                 </div>
               )}
 
               <textarea
+                rows="5"
                 name="message"
-                rows="4"
                 placeholder="Write Your Message..."
                 value={form.message}
                 onChange={handleChange}
-                className="w-full p-2.5 sm:p-3 text-sm sm:text-base rounded-xl bg-gray-100 dark:bg-white/10 border border-gray-300 dark:border-white/20"
-              />
+                className="w-full p-3 rounded-xl bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 outline-none"
+              ></textarea>
 
               <button
                 type="submit"
-                className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-2.5 sm:py-3 rounded-xl font-semibold text-sm sm:text-base"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold transition"
               >
                 Send Message
               </button>
 
             </form>
+
           </div>
 
-          {/* INFO CARD */}
-          <div className="bg-white dark:bg-gray-800/40 backdrop-blur-xl border border-gray-200 dark:border-white/20 shadow-xl rounded-2xl p-4 sm:p-6">
+          {/* Contact Info */}
+          <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
 
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-5">
+            <h2 className="text-2xl font-bold mb-6">
               Contact Info
             </h2>
 
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-5">
 
               <a
                 href="https://wa.me/8801816066829"
                 target="_blank"
-                className="flex items-center gap-3 sm:gap-4 bg-gray-100 dark:bg-white/10 hover:bg-green-500 duration-300 p-3 sm:p-4 rounded-xl"
+                rel="noreferrer"
+                className="flex items-center gap-4 p-4 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-green-500 hover:text-white transition"
               >
-                <FaWhatsapp className="text-2xl sm:text-3xl text-green-400" />
+                <FaWhatsapp className="text-3xl text-green-500" />
+
                 <div>
-                  <p className="text-xs sm:text-sm opacity-70">WhatsApp</p>
-                  <h3 className="text-sm sm:text-base font-semibold">
+                  <p className="text-sm opacity-70">
+                    WhatsApp
+                  </p>
+
+                  <h3 className="font-semibold">
                     +8801816066829
                   </h3>
                 </div>
               </a>
 
-              <div className="flex items-center gap-3 sm:gap-4 bg-gray-100 dark:bg-white/10 hover:bg-cyan-600 duration-300 p-3 sm:p-4 rounded-xl">
-                <FaPhoneAlt className="text-xl sm:text-2xl text-cyan-400" />
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-cyan-600 hover:text-white transition">
+                <FaPhoneAlt className="text-2xl text-cyan-500" />
+
                 <div>
-                  <p className="text-xs sm:text-sm opacity-70">Mobile</p>
-                  <h3 className="text-sm sm:text-base font-semibold">
+                  <p className="text-sm opacity-70">
+                    Mobile
+                  </p>
+
+                  <h3 className="font-semibold">
                     +8801816066829
                   </h3>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 sm:gap-4 bg-gray-100 dark:bg-white/10 hover:bg-purple-600 duration-300 p-3 sm:p-4 rounded-xl">
-                <FaEnvelope className="text-xl sm:text-2xl text-yellow-400" />
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-purple-600 hover:text-white transition">
+                <FaEnvelope className="text-2xl text-yellow-500" />
+
                 <div>
-                  <p className="text-xs sm:text-sm opacity-70">Email</p>
-                  <h3 className="text-sm sm:text-base font-semibold break-all">
+                  <p className="text-sm opacity-70">
+                    Email
+                  </p>
+
+                  <h3 className="font-semibold break-all">
                     yourgmail@gmail.com
                   </h3>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 sm:gap-4 bg-gray-100 dark:bg-white/10 hover:bg-pink-600 duration-300 p-3 sm:p-4 rounded-xl">
-                <FaFlag className="text-xl sm:text-2xl text-red-400" />
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-pink-600 hover:text-white transition">
+                <FaFlag className="text-2xl text-red-500" />
+
                 <div>
-                  <p className="text-xs sm:text-sm opacity-70">Nationality</p>
-                  <h3 className="text-sm sm:text-base font-semibold">
+                  <p className="text-sm opacity-70">
+                    Nationality
+                  </p>
+
+                  <h3 className="font-semibold">
                     Bangladeshi
                   </h3>
                 </div>
               </div>
 
             </div>
+
           </div>
 
         </div>
+
       </div>
+
     </section>
   );
 }

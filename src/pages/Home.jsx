@@ -9,7 +9,7 @@ import {
 
 function Home() {
   return (
-    <div className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center bg-gray-100 dark:bg-gray-900 text-black dark:text-white px-6 md:px-20 py-10 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center text-black dark:text-white px-6 md:px-20 py-10 transition-all duration-300">
 
       {/* Left Text */}
       <div className="w-full md:w-1/2 space-y-6 text-center md:text-left">
@@ -19,7 +19,7 @@ function Home() {
         </h1>
 
         <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed">
-          <span className="block text-3xl md:text-5xl font-semibold mb-3">
+          <span className="block text-3xl md:text-5xl font-semibold mb-3 text-black dark:text-white">
             Md Sohel Rana
           </span>
 
@@ -35,16 +35,16 @@ function Home() {
             href="https://www.facebook.com/share/1DX3tAnFtT/"
             target="_blank"
             rel="noreferrer"
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 text-white hover:scale-110 duration-300"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 text-white hover:scale-110 transition duration-300"
           >
             <FaFacebookF />
           </a>
 
           <a
-            href="https://www.linkedin.com/in/md-sohel-rana-554bb0414?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+            href="https://www.linkedin.com/in/md-sohel-rana-554bb0414"
             target="_blank"
             rel="noreferrer"
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-700 text-white hover:scale-110 duration-300"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-700 text-white hover:scale-110 transition duration-300"
           >
             <FaLinkedinIn />
           </a>
@@ -53,7 +53,7 @@ function Home() {
             href="https://instagram.com"
             target="_blank"
             rel="noreferrer"
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-pink-500 text-white hover:scale-110 duration-300"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-pink-500 text-white hover:scale-110 transition duration-300"
           >
             <FaInstagram />
           </a>
@@ -62,7 +62,7 @@ function Home() {
             href="https://youtube.com/@MdSohelRana-q4m6z"
             target="_blank"
             rel="noreferrer"
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-red-600 text-white hover:scale-110 duration-300"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-red-600 text-white hover:scale-110 transition duration-300"
           >
             <FaYoutube />
           </a>
@@ -79,7 +79,7 @@ function Home() {
           </Link>
 
           <Link to="/services">
-            <button className="w-40 h-12 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition duration-300">
+            <button className="w-40 h-12 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded-lg transition duration-300">
               My Work
             </button>
           </Link>
@@ -96,7 +96,7 @@ function Home() {
           {/* Rotating Blue Ring */}
           <div className="absolute inset-0 rounded-full border-[5px] border-blue-500 border-t-transparent animate-spin-slow shadow-[0_0_35px_#3b82f6]"></div>
 
-          {/* Glowing Ring */}
+          {/* Inner Ring */}
           <div className="absolute w-[88%] h-[88%] rounded-full border border-blue-400 opacity-40"></div>
 
           {/* Image */}
