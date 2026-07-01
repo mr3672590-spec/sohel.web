@@ -18,3 +18,4 @@ If you are developing a production application, we recommend using TypeScript wi
 "# sohel." 
 "# sohel." 
 "# sohel.web.bd" 
+"# sohel-web" 
